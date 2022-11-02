@@ -2,6 +2,7 @@ package com.cirofreitas.API.Musica.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,13 +15,9 @@ public class Album extends Entidade {
     @Column(name = "tipo")
     private String tipo;
 
-    @ElementCollection
-    @CollectionTable(
-            name = "tab_album_musica",
-            joinColumns=@JoinColumn(name = "album_id", referencedColumnName = "id")
-    )
-    @Column(name="musica")
-    private List<Musica> musicas;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "album_id")
+    private List<Musica> musicas = new ArrayList<Musica>();
 
     public LocalDate getDataLacamento() {
         return dataLacamento;
