@@ -11,17 +11,21 @@ public abstract class Entidade extends ObjetoDominio {
     private String descricao;
 
     @Column(name = "popularidade")
-    private Integer popularidade;
+    private Double popularidade;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "entidade_id")
     private List<Origem> origens = new ArrayList<>();
 
-    public String getDescricao() {
-        return descricao;
-    }
+    public String getDescricao() { return descricao; }
 
-    public Integer getPopularidade() {
-        return popularidade;
-    }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
+
+    public Double getPopularidade() { return popularidade; }
+
+    public void setPopularidade(Double popularidade) { this.popularidade = popularidade; }
+
+    public List<Origem> getOrigens() { return origens; }
+
+    public void setOrigens(List<Origem> origens) { this.origens = origens; }
 }

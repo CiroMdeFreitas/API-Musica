@@ -1,7 +1,11 @@
 package com.cirofreitas.API.Musica.model;
 
+import com.cirofreitas.API.Musica.dto.MusicaDto;
+import com.cirofreitas.API.Musica.infra.BusinessException;
+
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tab_musica")
@@ -20,15 +24,44 @@ public class Musica extends Entidade {
     @Column(name="genero")
     private List<Genero> generos;
 
-    public Integer getDuracao() {
-        return duracao;
+    public Integer getDuracao() { return duracao; }
+
+    public void setDuracao(Integer duracao) { this.duracao = duracao; }
+
+    public Boolean getExplicito() { return explicito; }
+
+    public void setExplicito(Boolean explicito) { this.explicito = explicito; }
+
+    public List<Genero> getGeneros() { return generos; }
+
+    public void setGeneros(List<Genero> generos) { this.generos = generos; }
+
+    public void validarDto(MusicaDto dto) {
+        String nome = dto.getNome();
+        if(nome == null || nome.trim().isEmpty())
+            throw new BusinessException("Não foi informado nome de musica!");
+
+        Double popularidade = dto.getPopularidade();
+        if(popularidade == null || popularidade < 0 || popularidade > 100)
+            throw new BusinessException("Valor de popularidade é inválido musica!");
+
+        Integer duracao = dto.getDuracao();
+        if(duracao == null || popularidade <= 0)
+            throw new BusinessException("Valor de popularidade é inválido musica!");
+
+        Boolean explicito = dto.getExplicito();
+        if(explicito == null)
+            throw new BusinessException("Não foi informado se música possui conteúdo explicito!");
     }
 
-    public Boolean getExplicito() {
-        return explicito;
-    }
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Musica) {
+            Musica genero = (Musica) obj;
 
-    public List<Genero> getGeneros() {
-        return generos;
+            return Objects.equals(this.getNome(), genero.getNome());
+        }
+
+        return false;
     }
 }
