@@ -5,7 +5,7 @@ public class ArtistaDto {
     private Double popularidade;
     private String tipo;
 
-    public ArtistaDto(String nome, String descricao, Double popularidade, String tipo) {
+    public ArtistaDto(String nome, Double popularidade, String tipo) {
         this.nome = nome;
         this.popularidade = popularidade;
         this.tipo = tipo;
