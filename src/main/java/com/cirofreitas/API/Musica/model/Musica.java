@@ -30,11 +30,11 @@ public class Musica extends Entidade {
 
         Double popularidade = dto.getPopularidade();
         if(popularidade == null || popularidade < 0 || popularidade > 100)
-            throw new BusinessException("Valor de popularidade é inválido musica!");
+            throw new BusinessException("Valor de popularidade é inválido!");
 
         Integer duracao = dto.getDuracao();
         if(duracao == null || popularidade <= 0)
-            throw new BusinessException("Valor de popularidade é inválido musica!");
+            throw new BusinessException("Valor de popularidade é inválido!");
 
         Boolean explicito = dto.getExplicito();
         if(explicito == null)
