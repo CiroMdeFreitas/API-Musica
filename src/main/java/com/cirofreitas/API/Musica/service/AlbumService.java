@@ -20,7 +20,6 @@ public class AlbumService {
         List<Album> albuns = repository.findAll();
         novoAlbum.setNome(album.getNome());
         if(!albuns.contains(novoAlbum)) {
-            novoAlbum.setDescricao(album.getDescricao());
             novoAlbum.setPopularidade(album.getPopularidade());
             novoAlbum.setTipo(album.getTipo());
             novoAlbum.setDataLacamento(album.getDataLacamento());

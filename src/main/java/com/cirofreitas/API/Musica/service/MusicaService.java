@@ -20,7 +20,6 @@ public class MusicaService {
         novaMusica.setNome(musica.getNome());
         List<Musica> musicas = repository.findAll();
         if(!musicas.contains(novaMusica)) {
-            novaMusica.setDescricao(musica.getDescricao());
             novaMusica.setPopularidade(musica.getPopularidade());
             novaMusica.setDuracao(musica.getDuracao());
             novaMusica.setExplicito(musica.getExplicito());

@@ -20,7 +20,6 @@ public class ArtistaService {
         novoArtista.setNome(artista.getNome());
         List<Artista> artistas = repository.findAll();
         if(artistas.contains(novoArtista)) {
-            novoArtista.setDescricao(artista.getDescricao());
             novoArtista.setPopularidade(artista.getPopularidade());
             novoArtista.setTipo(artista.getTipo());
 
