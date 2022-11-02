@@ -16,7 +16,4 @@ public class MusicaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MusicaApplication.class, args);
 	}
-
-	@GetMapping
-	public List<Album> helloWorld() { return new ArrayList<Album>(); }
 }
