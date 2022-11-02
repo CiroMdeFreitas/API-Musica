@@ -4,7 +4,6 @@ import com.cirofreitas.API.Musica.dto.MusicaDto;
 import com.cirofreitas.API.Musica.infra.BusinessException;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,14 +15,6 @@ public class Musica extends Entidade {
     @Column(name = "explicito")
     private Boolean explicito;
 
-    @ElementCollection
-    @CollectionTable(
-            name = "tab_musica_genero",
-            joinColumns=@JoinColumn(name = "musica_id", referencedColumnName = "id")
-    )
-    @Column(name="genero")
-    private List<Genero> generos;
-
     public Integer getDuracao() { return duracao; }
 
     public void setDuracao(Integer duracao) { this.duracao = duracao; }
@@ -31,10 +22,6 @@ public class Musica extends Entidade {
     public Boolean getExplicito() { return explicito; }
 
     public void setExplicito(Boolean explicito) { this.explicito = explicito; }
-
-    public List<Genero> getGeneros() { return generos; }
-
-    public void setGeneros(List<Genero> generos) { this.generos = generos; }
 
     public void validarDto(MusicaDto dto) {
         String nome = dto.getNome();
