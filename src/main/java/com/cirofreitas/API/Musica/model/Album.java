@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tab_album")
@@ -50,5 +51,16 @@ public class Album extends Entidade {
         LocalDate agora = LocalDate.now();
         if(dataLacamento == null || dataLacamento.isAfter(agora))
             throw  new BusinessException("Data fornecida é inválida!");
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Album) {
+            Album album = (Album) obj;
+
+            return Objects.equals(this.getNome(), album.getNome());
+        }
+
+        return false;
     }
 }
