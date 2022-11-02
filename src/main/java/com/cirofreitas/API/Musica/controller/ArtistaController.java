@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/artista")
+@RequestMapping(path = "/artista")
 public class ArtistaController {
     @Autowired
     private ArtistaRepository repository;
