@@ -16,7 +16,7 @@ public class ArtistaController {
     private ArtistaRepository repository;
 
     @GetMapping
-    public List<Artista> fiddAll() {
+    public List<Artista> findAll() {
         return repository.findAll();
     }
 }

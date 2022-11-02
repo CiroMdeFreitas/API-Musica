@@ -16,7 +16,7 @@ public class GeneroController {
     private GeneroRepository repository;
 
     @GetMapping
-    public List<Genero> fiddAll() {
+    public List<Genero> findAll() {
         return repository.findAll();
     }
 }

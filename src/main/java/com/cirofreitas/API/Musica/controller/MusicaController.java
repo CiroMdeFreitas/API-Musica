@@ -16,7 +16,7 @@ public class MusicaController {
     private MusicaRepository repository;
 
     @GetMapping
-    public List<Musica> fiddAll() {
+    public List<Musica> findAll() {
         return repository.findAll();
     }
 }

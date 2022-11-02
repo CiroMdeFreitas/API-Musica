@@ -16,7 +16,7 @@ public class AlbumController {
     private AlbumRepository repository;
 
     @GetMapping
-    public List<Album> fiddAll() {
+    public List<Album> findAll() {
         return repository.findAll();
     }
 }
