@@ -6,7 +6,7 @@ import com.cirofreitas.API.Musica.repository.MusicaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MusicaService {
@@ -14,10 +14,8 @@ public class MusicaService {
     private MusicaRepository repository;
 
     public void save(MusicaDto musica) {
-        Musica novaMusica = musica.dtoToMusica();
-        List<Musica> musicas = repository.findAll();
-        int indiceMusica = musicas.indexOf(novaMusica);
-        if(indiceMusica == -1)
-            repository.save(novaMusica);
+        Optional<Musica> musicaPresente = repository.findMusicaByOrigem(musica.getIdOrigem())
+        if(!musicaPresente.isPresent())
+            repository.save(musica.dtoToModel());
     }
 }

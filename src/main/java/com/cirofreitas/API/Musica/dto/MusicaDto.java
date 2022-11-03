@@ -21,7 +21,7 @@ public class MusicaDto {
         this.explicito = explicito;
     }
 
-    public Musica dtoToMusica() {
+    public Musica dtoToModel() {
         Musica novaMusica = new Musica();
         novaMusica.validarDto(this);
 
