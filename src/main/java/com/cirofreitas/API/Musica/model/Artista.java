@@ -38,6 +38,17 @@ public class Artista extends Entidade {
             this.albuns.add(album);
     }
 
+    public void gerarPopularidade() {
+        Double novaPopularidade = 0.00;
+        for(Album album : this.albuns)
+            novaPopularidade += album.getPopularidade();
+
+        if(novaPopularidade > 0.00)
+            this.setPopularidade(novaPopularidade/this.albuns.size());
+        else
+            this.setPopularidade(1.00);
+    }
+
     public void setAlbum(int indice, Album albumAtualizado) {
         this.albuns.set(indice, albumAtualizado);
     }
