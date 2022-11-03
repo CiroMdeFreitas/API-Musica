@@ -26,7 +26,7 @@ public interface AlbumRepository extends JpaRepository<Album, Integer> {
             "ORDER BY tab_album.popularidade DESC " +
             "LIMIT 10",
             nativeQuery = true)
-    List<Album> listarTopTenAlbum();
+    List<Album> listarTopDezAlbum();
 
     @Query(value =
             "SELECT DISTINCT album.* " +
@@ -38,5 +38,5 @@ public interface AlbumRepository extends JpaRepository<Album, Integer> {
             "ORDER BY album.popularidade DESC " +
             "LIMIT 5",
             nativeQuery = true)
-    Optional<Album> listarTop5AlbumDeArtista(Integer idArtista);
+    List<Album> listarTop5AlbumDeArtista(Integer idArtista);
 }

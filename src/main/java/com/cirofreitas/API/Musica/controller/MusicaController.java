@@ -26,7 +26,7 @@ public class MusicaController {
 
     @GetMapping("top10")
     public List<Musica> listTopTenMusica() {
-        return repository.listTopTenMusica();
+        return repository.listarTopDezMusicas();
     }
 
     @GetMapping("{id}")

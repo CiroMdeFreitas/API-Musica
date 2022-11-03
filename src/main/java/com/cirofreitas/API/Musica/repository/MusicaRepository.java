@@ -26,7 +26,7 @@ public interface MusicaRepository extends JpaRepository<Musica, Integer> {
             "ORDER BY tab_musica.popularidade DESC " +
             "LIMIT 10",
             nativeQuery = true)
-    List<Musica> listTopTenMusica();
+    List<Musica> listarTopDezMusicas();
 
     @Query(value =
             "SELECT musica.* " +
@@ -36,5 +36,5 @@ public interface MusicaRepository extends JpaRepository<Musica, Integer> {
             "ORDER BY musica.popularidade DESC " +
             "LIMIT 1",
             nativeQuery = true)
-    Musica findTopAlbumMusicas(Integer idAlbum);
+    Musica listarTopMusicaDeAlbum(Integer idAlbum);
 }

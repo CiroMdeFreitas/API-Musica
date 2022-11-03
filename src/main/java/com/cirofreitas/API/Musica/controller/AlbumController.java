@@ -27,7 +27,7 @@ public class AlbumController {
 
     @GetMapping("top10")
     public List<Album> listTopTenAlbum() {
-        return repository.listarTopTenAlbum();
+        return repository.listarTopDezAlbum();
     }
 
     @GetMapping("{id}")

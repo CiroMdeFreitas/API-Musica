@@ -35,7 +35,7 @@ public class AlbumService {
 
     public List<Musica> listarMusicas(Integer id) { return this.findById(id).getMusicas(); }
 
-    public Musica listarTopMusicaDeAlbum(Integer id) { return musicaRepository.findTopAlbumMusicas(id); }
+    public Musica listarTopMusicaDeAlbum(Integer id) { return musicaRepository.listarTopMusicaDeAlbum(id); }
 
     public void save(AlbumDto album) {
         Album novoAlbum = album.dtoToModel();
