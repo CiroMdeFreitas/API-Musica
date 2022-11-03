@@ -13,14 +13,21 @@ import java.util.Objects;
 public class Artista extends Entidade {
     @Column(name="tipo")
     private String tipo;
-
-    @ElementCollection
-    @CollectionTable(
-            name = "tab_artista_album",
-            joinColumns=@JoinColumn(name = "artista_id", referencedColumnName = "id")
-    )
-    @Column(name="album")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "artista_album",
+            joinColumns = {
+                    @JoinColumn(name = "artista_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "album_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)})
     private List<Album> albuns = new ArrayList<Album>();
+    //@ElementCollection
+    //@CollectionTable(
+    //        name = "tab_artista_album",
+    //        joinColumns=@JoinColumn(name = "artista_id", referencedColumnName = "id")
+    //)
+    //@Column(name="album")
 
     public void validarDto(ArtistaDto dto) {
         String nome = dto.getNome();

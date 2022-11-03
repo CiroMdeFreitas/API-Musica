@@ -18,6 +18,9 @@ public class Album extends Entidade {
     @Column(name = "tipo")
     private String tipo;
 
+    @ManyToMany(mappedBy = "albuns", fetch = FetchType.LAZY)
+    private List<Artista> artistas = new ArrayList<Artista>();
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "album_id")
     private List<Musica> musicas = new ArrayList<Musica>();
