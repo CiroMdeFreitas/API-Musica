@@ -14,8 +14,8 @@ import static com.cirofreitas.API.Musica.util.DoubleHanfler.formatarParaDuasCasa
 @Entity
 @Table(name = "tab_album")
 public class Album extends Entidade {
-    @Column(name = "data_lacamento")
-    private Year dataLacamento;
+    @Column(name = "ano_lacamento")
+    private Year anoLacamento;
 
     @Column(name = "tipo")
     private String tipo;
@@ -36,7 +36,7 @@ public class Album extends Entidade {
         if(tipo == null || tipo.trim().isEmpty())
             throw new BusinessException("Não foi informado tipo de album!");
 
-        Year dataLacamento = dto.getDataLacamento();
+        Year dataLacamento = dto.getAnoLacamento();
         Year agora = Year.now();
         if(dataLacamento == null || dataLacamento.isAfter(agora))
             throw  new BusinessException("Data fornecida é inválida!");
@@ -62,9 +62,9 @@ public class Album extends Entidade {
             this.setPopularidade(1.00);
     }
 
-    public Year getDataLacamento() { return dataLacamento; }
+    public Year getAnoLacamento() { return anoLacamento; }
 
-    public void setDataLacamento(Year dataLacamento) { this.dataLacamento = dataLacamento; }
+    public void setAnoLacamento(Year anoLacamento) { this.anoLacamento = anoLacamento; }
 
     public String getTipo() { return tipo; }
 

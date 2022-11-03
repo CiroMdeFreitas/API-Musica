@@ -12,15 +12,15 @@ public class AlbumDto {
     private String nomeOrigem;
     private String nome;
     private String tipo;
-    private Year dataLacamento;
+    private Year anoLacamento;
     private List<MusicaDto> musicas;
 
-    public AlbumDto(String idOrigem, String nomeOrigem, String nome, String tipo, Year dataLacamento) {
+    public AlbumDto(String idOrigem, String nomeOrigem, String nome, String tipo, Year anoLacamento) {
         this.idOrigem = idOrigem;
         this.nomeOrigem = nomeOrigem;
         this.nome = nome;
         this.tipo = tipo;
-        this.dataLacamento = dataLacamento;
+        this.anoLacamento = anoLacamento;
         this.musicas = new ArrayList<MusicaDto>();
     }
 
@@ -36,7 +36,7 @@ public class AlbumDto {
         novoAlbum.setOrigem(idOrigem, nomeOrigem);
         novoAlbum.setNome(this.nome);
         novoAlbum.setTipo(this.tipo);
-        novoAlbum.setDataLacamento(this.dataLacamento);
+        novoAlbum.setAnoLacamento(this.anoLacamento);
 
         for(MusicaDto musica : this.musicas)
             novoAlbum.adicionarMusica(musica.dtoToModel());
@@ -50,7 +50,7 @@ public class AlbumDto {
 
     public String getTipo() { return tipo; }
 
-    public Year getDataLacamento() { return dataLacamento; }
+    public Year getAnoLacamento() { return anoLacamento; }
 
     public List<MusicaDto> getMusicas() { return musicas; }
 
