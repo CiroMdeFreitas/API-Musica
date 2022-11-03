@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface OrigemRepository extends JpaRepository<Origem, Integer> {
-    @Query(value = "SELECT origem FROM tab_origem origem WHERE origem.id_origem = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM tab_origem origem WHERE origem.id_origem = ?1", nativeQuery = true)
     Artista findOrigemByIdOrigem(String idOrigem);
 }
