@@ -34,11 +34,14 @@ public class Artista extends Entidade {
     }
 
     public void adicionarAlbum(Album album) {
-        if(!this.albuns.contains(album))
+        if(!this.albuns.contains(album)) {
             this.albuns.add(album);
+            this.gerarPopularidade();
+
+        }
     }
 
-    public void gerarPopularidade() {
+    private void gerarPopularidade() {
         Double novaPopularidade = 0.00;
         for(Album album : this.albuns)
             novaPopularidade += album.getPopularidade();
@@ -51,6 +54,7 @@ public class Artista extends Entidade {
 
     public void setAlbum(int indice, Album albumAtualizado) {
         this.albuns.set(indice, albumAtualizado);
+        this.gerarPopularidade();
     }
 
     public List<Album> getAlbuns() { return albuns; }

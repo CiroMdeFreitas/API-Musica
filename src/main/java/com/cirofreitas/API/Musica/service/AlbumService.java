@@ -25,13 +25,8 @@ public class AlbumService {
                 if(!albumRegitrado.getMusicas().contains(musica))
                     albumRegitrado.adicionarMusica(musica);
 
-            albumRegitrado.gerarPopularidade();
-
             repository.save(albumRegitrado);
-        } else {
-            novoAlbum.gerarPopularidade();
-
+        } else
             repository.save(novoAlbum);
-        }
     }
 }

@@ -41,11 +41,13 @@ public class Album extends Entidade {
     }
 
     public void adicionarMusica(Musica musica) {
-        if(!this.musicas.contains(musica))
+        if(!this.musicas.contains(musica)) {
             this.musicas.add(musica);
+            this.gerarPopularidade();
+        }
     }
 
-    public void gerarPopularidade() {
+    private void gerarPopularidade() {
         Double novaPopularidade = 0.00;
         for(Musica musica : this.musicas)
             novaPopularidade += musica.getPopularidade();
