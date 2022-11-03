@@ -2,5 +2,13 @@ package com.cirofreitas.API.Musica.repository;
 
 import com.cirofreitas.API.Musica.model.Artista;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
-public interface ArtistaRepository extends JpaRepository<Artista, Integer> { }
+import java.util.Optional;
+
+@Repository
+public interface ArtistaRepository extends JpaRepository<Artista, Integer> {
+    @Query("SELECT artista FROM tab_artista artista, tab_origem origem WHERE artista.id = origem.entidade_id AND origem.id_origem = ?1")
+    Optional<Artista> findArtistaByOrigem(String idOrigem);
+}
