@@ -1,6 +1,7 @@
 package com.cirofreitas.API.Musica.service;
 
 import com.cirofreitas.API.Musica.dto.ArtistaDto;
+import com.cirofreitas.API.Musica.infra.MissingEntityException;
 import com.cirofreitas.API.Musica.model.Album;
 import com.cirofreitas.API.Musica.model.Artista;
 import com.cirofreitas.API.Musica.model.Musica;
@@ -9,6 +10,9 @@ import com.cirofreitas.API.Musica.repository.AlbumRepository;
 import com.cirofreitas.API.Musica.repository.ArtistaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,6 +22,29 @@ public class ArtistaService {
 
     @Autowired
     private AlbumRepository albumRepository;
+
+    public Artista findById(Integer id) {
+        Optional<Artista> artista  = repository.findById(id);
+
+        if(!artista.isPresent())
+            throw new MissingEntityException("Não foi encontrado nenhum artista com este id!");
+
+        return artista.get();
+    }
+
+    public List<Album> listarAlbuns(Integer id) { return this.findById(id).getAlbuns(); }
+
+    public List<Musica> listarMusicas(Integer id) {
+        List<Musica> musicas = new ArrayList<Musica>();
+
+        for(Album album : this.findById(id).getAlbuns())
+            for(Musica musica: album.getMusicas())
+                musicas.add(musica);
+
+        return musicas;
+    }
+
+    public List<Origem> listarOrigens(Integer id) { return this.findById(id).getOrigens(); }
 
     public void save(ArtistaDto artista) {
         Artista novoArtista = artista.dtoToModel();
