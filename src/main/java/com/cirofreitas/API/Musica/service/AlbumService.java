@@ -2,11 +2,12 @@ package com.cirofreitas.API.Musica.service;
 
 import com.cirofreitas.API.Musica.dto.AlbumDto;
 import com.cirofreitas.API.Musica.model.Album;
+import com.cirofreitas.API.Musica.model.Musica;
 import com.cirofreitas.API.Musica.repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AlbumService {
@@ -14,17 +15,17 @@ public class AlbumService {
     private AlbumRepository repository;
 
     public void save(AlbumDto album) {
-        Album novoAlbum = new Album();
-        novoAlbum.validarDto(album);
+        Optional<Album> albumPresente = repository.findAlbumByOrigem(album.getIdOrigem());
+        if(albumPresente.isPresent()) {
+            Album novoAlbum = album.dtoToModel();
+            Album albumRegitrado = albumPresente.get();
 
-        List<Album> albuns = repository.findAll();
-        novoAlbum.setNome(album.getNome());
-        if(!albuns.contains(novoAlbum)) {
-            novoAlbum.setPopularidade(album.getPopularidade());
-            novoAlbum.setTipo(album.getTipo());
-            novoAlbum.setDataLacamento(album.getDataLacamento());
+            for(Musica musica : novoAlbum.getMusicas())
+                if(!albumRegitrado.getMusicas().contains(musica))
+                    albumRegitrado.adicionarMusica(musica);
 
-            repository.save(novoAlbum);
-        }
+            repository.save(albumRegitrado);
+        } else
+            repository.save(album.dtoToModel());
     }
 }

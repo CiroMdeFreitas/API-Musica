@@ -22,6 +22,26 @@ public class Album extends Entidade {
     @JoinColumn(name = "album_id")
     private List<Musica> musicas = new ArrayList<Musica>();
 
+    public void validarDto(AlbumDto dto) {
+        String nome = dto.getNome();
+        if(nome == null || nome.trim().isEmpty())
+            throw new BusinessException("Não foi informado nome de album!");
+
+        String tipo = dto.getTipo();
+        if(tipo == null || tipo.trim().isEmpty())
+            throw new BusinessException("Não foi informado tipo de album!");
+
+        LocalDate dataLacamento = dto.getDataLacamento();
+        LocalDate agora = LocalDate.now();
+        if(dataLacamento == null || dataLacamento.isAfter(agora))
+            throw  new BusinessException("Data fornecida é inválida!");
+    }
+
+    public void adicionarMusica(Musica musica) {
+        if(!this.musicas.contains(musica))
+            this.musicas.add(musica);
+    }
+
     public LocalDate getDataLacamento() { return dataLacamento; }
 
     public void setDataLacamento(LocalDate dataLacamento) { this.dataLacamento = dataLacamento; }
@@ -33,25 +53,6 @@ public class Album extends Entidade {
     public List<Musica> getMusicas() { return musicas; }
 
     public void setMusicas(List<Musica> musicas) { this.musicas = musicas; }
-
-    public void validarDto(AlbumDto dto) {
-        String nome = dto.getNome();
-        if(nome == null || nome.trim().isEmpty())
-            throw new BusinessException("Não foi informado nome de album!");
-
-        Double popularidade = dto.getPopularidade();
-        if(popularidade == null || popularidade < 0 || popularidade > 100)
-            throw new BusinessException("Valor de popularidade é inválido!");
-
-        String tipo = dto.getTipo();
-        if(tipo == null || tipo.trim().isEmpty())
-            throw new BusinessException("Não foi informado tipo de album!");
-
-        LocalDate dataLacamento = dto.getDataLacamento();
-        LocalDate agora = LocalDate.now();
-        if(dataLacamento == null || dataLacamento.isAfter(agora))
-            throw  new BusinessException("Data fornecida é inválida!");
-    }
 
     @Override
     public boolean equals(Object obj) {
