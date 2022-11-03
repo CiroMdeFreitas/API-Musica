@@ -2,7 +2,7 @@ package com.cirofreitas.API.Musica.dto;
 
 import com.cirofreitas.API.Musica.model.Album;
 
-import java.time.LocalDate;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -12,10 +12,10 @@ public class AlbumDto {
     private String nomeOrigem;
     private String nome;
     private String tipo;
-    private LocalDate dataLacamento;
+    private Year dataLacamento;
     private List<MusicaDto> musicas;
 
-    public AlbumDto(String idOrigem, String nomeOrigem, String nome, String tipo, LocalDate dataLacamento) {
+    public AlbumDto(String idOrigem, String nomeOrigem, String nome, String tipo, Year dataLacamento) {
         this.idOrigem = idOrigem;
         this.nomeOrigem = nomeOrigem;
         this.nome = nome;
@@ -50,7 +50,7 @@ public class AlbumDto {
 
     public String getTipo() { return tipo; }
 
-    public LocalDate getDataLacamento() { return dataLacamento; }
+    public Year getDataLacamento() { return dataLacamento; }
 
     public List<MusicaDto> getMusicas() { return musicas; }
 

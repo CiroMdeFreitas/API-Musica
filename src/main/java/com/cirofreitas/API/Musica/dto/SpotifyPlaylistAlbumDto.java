@@ -1,13 +1,15 @@
 package com.cirofreitas.API.Musica.dto;
 
-import java.time.LocalDate;
+import java.time.Year;
 import java.util.List;
+import java.util.Objects;
 
 public class SpotifyPlaylistAlbumDto {
     private String id;
     private String name;
     private String album_type;
-    private LocalDate release_date;
+    private String release_date_precision;
+    private Year release_date;
     private List<SpotifyPlaylistArtistDto> artists;
 
     public AlbumDto toAlbumDto() {
@@ -26,7 +28,16 @@ public class SpotifyPlaylistAlbumDto {
 
     public void setAlbum_type(String album_type) { this.album_type = album_type; }
 
-    public void setRelease_date(LocalDate release_date) { this.release_date = release_date; }
+    public void setRelease_date_precision(String release_date_precision) {
+        this.release_date_precision = release_date_precision;
+    }
+
+    public void setRelease_date(String release_date) {
+        if(Objects.equals(this.release_date_precision, "year"))
+            this.release_date = Year.parse(release_date);
+        else
+            this.release_date = Year.parse(release_date.substring(0, 4));
+    }
 
     public void setArtists(List<SpotifyPlaylistArtistDto> artists) { this.artists = artists; }
 

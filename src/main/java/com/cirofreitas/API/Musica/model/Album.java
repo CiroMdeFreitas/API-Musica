@@ -4,7 +4,7 @@ import com.cirofreitas.API.Musica.dto.AlbumDto;
 import com.cirofreitas.API.Musica.infra.BusinessException;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,7 +13,7 @@ import java.util.Objects;
 @Table(name = "tab_album")
 public class Album extends Entidade {
     @Column(name = "data_lacamento")
-    private LocalDate dataLacamento;
+    private Year dataLacamento;
 
     @Column(name = "tipo")
     private String tipo;
@@ -34,8 +34,8 @@ public class Album extends Entidade {
         if(tipo == null || tipo.trim().isEmpty())
             throw new BusinessException("Não foi informado tipo de album!");
 
-        LocalDate dataLacamento = dto.getDataLacamento();
-        LocalDate agora = LocalDate.now();
+        Year dataLacamento = dto.getDataLacamento();
+        Year agora = Year.now();
         if(dataLacamento == null || dataLacamento.isAfter(agora))
             throw  new BusinessException("Data fornecida é inválida!");
     }
@@ -56,9 +56,9 @@ public class Album extends Entidade {
             this.setPopularidade(0.00);
     }
 
-    public LocalDate getDataLacamento() { return dataLacamento; }
+    public Year getDataLacamento() { return dataLacamento; }
 
-    public void setDataLacamento(LocalDate dataLacamento) { this.dataLacamento = dataLacamento; }
+    public void setDataLacamento(Year dataLacamento) { this.dataLacamento = dataLacamento; }
 
     public String getTipo() { return tipo; }
 
