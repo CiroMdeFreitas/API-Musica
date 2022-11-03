@@ -36,5 +36,5 @@ public interface MusicaRepository extends JpaRepository<Musica, Integer> {
             "ORDER BY musica.popularidade DESC " +
             "LIMIT 1",
             nativeQuery = true)
-    Musica findTopAlbumMusic(Integer idAlbum);
+    Musica findTopAlbumMusicas(Integer idAlbum);
 }
