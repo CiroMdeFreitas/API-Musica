@@ -26,5 +26,5 @@ public interface AlbumRepository extends JpaRepository<Album, Integer> {
             "ORDER BY tab_album.popularidade DESC " +
             "LIMIT 10",
             nativeQuery = true)
-    List<Album> listTopTenAlbum();
+    List<Album> listarTopTenAlbum();
 }
