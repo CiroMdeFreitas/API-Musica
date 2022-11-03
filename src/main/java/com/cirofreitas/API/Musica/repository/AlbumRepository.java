@@ -10,9 +10,21 @@ import java.util.Optional;
 
 @Repository
 public interface AlbumRepository extends JpaRepository<Album, Integer> {
-    @Query(value = "SELECT * FROM tab_album album, tab_origem origem WHERE album.id = origem.entidade_id AND origem.id_origem = ?1", nativeQuery = true)
+    @Query(value =
+            "SELECT * " +
+            "FROM tab_album album, tab_origem origem " +
+            "WHERE " +
+            "album.id = origem.entidade_id " +
+            "AND " +
+            "origem.id_origem = ?1",
+            nativeQuery = true)
     Optional<Album> findAlbumByOrigem(String idOrigem);
 
-    @Query(value = "SELECT * FROM tab_album ORDER BY tab_album.popularidade DESC LIMIT 10", nativeQuery = true)
+    @Query(value =
+            "SELECT * " +
+            "FROM tab_album " +
+            "ORDER BY tab_album.popularidade DESC " +
+            "LIMIT 10",
+            nativeQuery = true)
     List<Album> listTopTenAlbum();
 }
