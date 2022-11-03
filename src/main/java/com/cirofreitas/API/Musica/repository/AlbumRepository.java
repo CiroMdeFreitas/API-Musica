@@ -27,4 +27,16 @@ public interface AlbumRepository extends JpaRepository<Album, Integer> {
             "LIMIT 10",
             nativeQuery = true)
     List<Album> listarTopTenAlbum();
+
+    @Query(value =
+            "SELECT DISTINCT album.* " +
+            "FROM tab_album album, tab_artista artista, artista_album relacao " +
+            "WHERE " +
+            "album.id = relacao.album_id " +
+            "AND " +
+            "relacao.artista_id = ?1 " +
+            "ORDER BY album.popularidade DESC " +
+            "LIMIT 5",
+            nativeQuery = true)
+    Optional<Album> listarTop5AlbumDeArtista(Integer idArtista);
 }
