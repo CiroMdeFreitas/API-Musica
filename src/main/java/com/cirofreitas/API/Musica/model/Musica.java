@@ -15,21 +15,13 @@ public class Musica extends Entidade {
     @Column(name = "explicito")
     private Boolean explicito;
 
-    public Integer getDuracao() { return duracao; }
-
-    public void setDuracao(Integer duracao) { this.duracao = duracao; }
-
-    public Boolean getExplicito() { return explicito; }
-
-    public void setExplicito(Boolean explicito) { this.explicito = explicito; }
-
     public void validarDto(MusicaDto dto) {
         String nome = dto.getNome();
         if(nome == null || nome.trim().isEmpty())
             throw new BusinessException("Não foi informado nome de musica!");
 
         Double popularidade = dto.getPopularidade();
-        if(popularidade == null || popularidade < 0 || popularidade > 100)
+        if(popularidade == null || popularidade < 0.00 || popularidade > 100.00)
             throw new BusinessException("Valor de popularidade é inválido!");
 
         Integer duracao = dto.getDuracao();
@@ -41,12 +33,23 @@ public class Musica extends Entidade {
             throw new BusinessException("Não foi informado se música possui conteúdo explicito!");
     }
 
+    public Integer getDuracao() { return duracao; }
+
+    public void setDuracao(Integer duracao) { this.duracao = duracao; }
+
+    public Boolean getExplicito() { return explicito; }
+
+    public void setExplicito(Boolean explicito) { this.explicito = explicito; }
+
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof Musica) {
-            Musica genero = (Musica) obj;
+            Musica musica = (Musica) obj;
 
-            return Objects.equals(this.getNome(), genero.getNome());
+            if(Objects.equals(this.getNome(), musica.getNome()))
+                for(Origem origem : musica.getOrigens())
+                    if(this.getOrigens().contains(origem))
+                        return true;
         }
 
         return false;

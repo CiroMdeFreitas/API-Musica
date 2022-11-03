@@ -14,17 +14,10 @@ public class MusicaService {
     private MusicaRepository repository;
 
     public void save(MusicaDto musica) {
-        Musica novaMusica = new Musica();
-        novaMusica.validarDto(musica);
-
-        novaMusica.setNome(musica.getNome());
+        Musica novaMusica = musica.dtoToMusica();
         List<Musica> musicas = repository.findAll();
-        if(!musicas.contains(novaMusica)) {
-            novaMusica.setPopularidade(musica.getPopularidade());
-            novaMusica.setDuracao(musica.getDuracao());
-            novaMusica.setExplicito(musica.getExplicito());
-
+        int indiceMusica = musicas.indexOf(novaMusica);
+        if(indiceMusica == -1)
             repository.save(novaMusica);
-        }
     }
 }
