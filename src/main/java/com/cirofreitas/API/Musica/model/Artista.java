@@ -22,12 +22,6 @@ public class Artista extends Entidade {
                     @JoinColumn(name = "album_id", referencedColumnName = "id",
                             nullable = false, updatable = false)})
     private List<Album> albuns = new ArrayList<Album>();
-    //@ElementCollection
-    //@CollectionTable(
-    //        name = "tab_artista_album",
-    //        joinColumns=@JoinColumn(name = "artista_id", referencedColumnName = "id")
-    //)
-    //@Column(name="album")
 
     public void validarDto(ArtistaDto dto) {
         String nome = dto.getNome();
