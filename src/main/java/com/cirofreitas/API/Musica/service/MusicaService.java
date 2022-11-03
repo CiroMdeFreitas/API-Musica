@@ -19,7 +19,7 @@ public class MusicaService {
     public Musica findById(Integer id) {
         Optional<Musica> musica = repository.findById(id);
 
-        if(musica.isPresent())
+        if(!musica.isPresent())
             throw new MissingEntityException("Não foi encontrado nenhum album com este id!");
 
         return musica.get();

@@ -16,7 +16,7 @@ public class OrigemService {
     public Origem findById(Integer id) {
         Optional<Origem> origem = repository.findById(id);
 
-        if(origem.isPresent())
+        if(!origem.isPresent())
             throw new MissingEntityException("Não foi encontrado nenhum album com este id!");
 
         return origem.get();

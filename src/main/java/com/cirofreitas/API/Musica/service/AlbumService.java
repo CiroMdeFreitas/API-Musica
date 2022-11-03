@@ -20,8 +20,9 @@ public class AlbumService {
 
     public Album findById(Integer id) {
         Optional<Album> album = repository.findById(id);
+        System.out.println(id);
 
-        if(album.isPresent())
+        if(!album.isPresent())
             throw new MissingEntityException("Não foi encontrado nenhum album com este id!");
 
         return album.get();
