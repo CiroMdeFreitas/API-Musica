@@ -6,10 +6,10 @@ import com.cirofreitas.API.Musica.model.Album;
 import com.cirofreitas.API.Musica.model.Musica;
 import com.cirofreitas.API.Musica.model.Origem;
 import com.cirofreitas.API.Musica.repository.AlbumRepository;
+import com.cirofreitas.API.Musica.repository.MusicaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +17,9 @@ import java.util.Optional;
 public class AlbumService {
     @Autowired
     private AlbumRepository repository;
+
+    @Autowired
+    private MusicaRepository musicaRepository;
 
     public Album findById(Integer id) {
         Optional<Album> album = repository.findById(id);
@@ -32,17 +35,7 @@ public class AlbumService {
 
     public List<Musica> listarMusicas(Integer id) { return this.findById(id).getMusicas(); }
 
-    public Musica listarTopMusicaDeAlbum(Integer id) {
-        Album album = this.findById(id);
-        Musica topMusica = new Musica();
-        topMusica.setPopularidade(0.00);
-
-        for(Musica musica : album.getMusicas())
-            if(musica.getPopularidade() > topMusica.getPopularidade())
-                topMusica = musica;
-
-        return topMusica;
-    }
+    public Musica listarTopMusicaDeAlbum(Integer id) { return musicaRepository.findTopAlbumMusic(id); }
 
     public void save(AlbumDto album) {
         Album novoAlbum = album.dtoToModel();

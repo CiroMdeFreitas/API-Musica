@@ -10,7 +10,8 @@ import java.util.Optional;
 
 @Repository
 public interface MusicaRepository extends JpaRepository<Musica, Integer> {
-    @Query(value = "SELECT * " +
+    @Query(value =
+            "SELECT * " +
             "FROM tab_musica musica, tab_origem origem " +
             "WHERE " +
             "musica.id = origem.entidade_id " +
@@ -19,10 +20,21 @@ public interface MusicaRepository extends JpaRepository<Musica, Integer> {
             nativeQuery = true)
     Optional<Musica> findMusicaByOrigem(String idOrigem);
 
-    @Query(value = "SELECT * " +
+    @Query(value =
+            "SELECT * " +
             "FROM tab_musica " +
             "ORDER BY tab_musica.popularidade DESC " +
             "LIMIT 10",
             nativeQuery = true)
     List<Musica> listTopTenMusica();
+
+    @Query(value =
+            "SELECT musica.* " +
+            "FROM tab_musica musica, tab_album album " +
+            "WHERE " +
+            "musica.album_id = ?1 " +
+            "ORDER BY musica.popularidade DESC " +
+            "LIMIT 1",
+            nativeQuery = true)
+    Musica findTopAlbumMusic(Integer idAlbum);
 }
