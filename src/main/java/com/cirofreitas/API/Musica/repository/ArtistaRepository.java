@@ -9,6 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface ArtistaRepository extends JpaRepository<Artista, Integer> {
-    @Query("SELECT artista FROM tab_artista artista, tab_origem origem WHERE artista.id = origem.entidade_id AND origem.id_origem = ?1")
+    @Query(value = "SELECT artista FROM tab_artista artista, tab_origem origem WHERE artista.id = origem.entidade_id AND origem.id_origem = ?1", nativeQuery = true)
     Optional<Artista> findArtistaByOrigem(String idOrigem);
 }
