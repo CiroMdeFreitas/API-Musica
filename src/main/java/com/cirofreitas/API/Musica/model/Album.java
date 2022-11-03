@@ -14,8 +14,8 @@ import static com.cirofreitas.API.Musica.util.DoubleHanfler.formatarParaDuasCasa
 @Entity
 @Table(name = "tab_album")
 public class Album extends Entidade {
-    @Column(name = "ano_lacamento")
-    private Year anoLacamento;
+    @Column(name = "ano_lacamento", columnDefinition = "VARCHAR(5)")
+    private String anoLacamento;
 
     @Column(name = "tipo")
     private String tipo;
@@ -62,9 +62,9 @@ public class Album extends Entidade {
             this.setPopularidade(1.00);
     }
 
-    public Year getAnoLacamento() { return anoLacamento; }
+    public String getAnoLacamento() { return anoLacamento; }
 
-    public void setAnoLacamento(Year anoLacamento) { this.anoLacamento = anoLacamento; }
+    public void setAnoLacamento(String anoLacamento) { this.anoLacamento = anoLacamento; }
 
     public String getTipo() { return tipo; }
 

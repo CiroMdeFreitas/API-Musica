@@ -32,6 +32,7 @@ public class SpotifyJsonPlaylistService {
                     novoArtista.setAlbuns(novosArtistas.get(indiceArtista).getAlbuns());
                 }
                 novoArtista.adicionarAlbum(novoAlbum);
+                System.out.println(novoAlbum.getAnoLacamento());
 
                 novosArtistas.add(novoArtista);
             });

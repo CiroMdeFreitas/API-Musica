@@ -36,7 +36,7 @@ public class AlbumDto {
         novoAlbum.setOrigem(idOrigem, nomeOrigem);
         novoAlbum.setNome(this.nome);
         novoAlbum.setTipo(this.tipo);
-        novoAlbum.setAnoLacamento(this.anoLacamento);
+        novoAlbum.setAnoLacamento(this.anoLacamento.toString());
 
         for(MusicaDto musica : this.musicas)
             novoAlbum.adicionarMusica(musica.dtoToModel());

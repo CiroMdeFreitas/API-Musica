@@ -8,17 +8,22 @@ public class SpotifyPlaylistAlbumDto {
     private String id;
     private String name;
     private String album_type;
-    private String release_date_precision;
-    private Year release_date;
+    private String release_date;
     private List<SpotifyPlaylistArtistDto> artists;
 
     public AlbumDto toAlbumDto() {
+        Year anoLancamento;
+        if(release_date.length() == 4)
+            anoLancamento = Year.parse(release_date);
+        else
+            anoLancamento = Year.parse(release_date.substring(0, 4));
+
         return new AlbumDto(
                 id,
                 "Spotify",
                 name,
                 album_type,
-                release_date
+                anoLancamento
         );
     }
 
@@ -28,16 +33,7 @@ public class SpotifyPlaylistAlbumDto {
 
     public void setAlbum_type(String album_type) { this.album_type = album_type; }
 
-    public void setRelease_date_precision(String release_date_precision) {
-        this.release_date_precision = release_date_precision;
-    }
-
-    public void setRelease_date(String release_date) {
-        if(Objects.equals(this.release_date_precision, "year"))
-            this.release_date = Year.parse(release_date);
-        else
-            this.release_date = Year.parse(release_date.substring(0, 4));
-    }
+    public void setRelease_date(String release_date) { this.release_date = release_date; }
 
     public void setArtists(List<SpotifyPlaylistArtistDto> artists) { this.artists = artists; }
 
