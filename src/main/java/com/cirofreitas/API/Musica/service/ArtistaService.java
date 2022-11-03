@@ -8,6 +8,7 @@ import com.cirofreitas.API.Musica.model.Musica;
 import com.cirofreitas.API.Musica.model.Origem;
 import com.cirofreitas.API.Musica.repository.AlbumRepository;
 import com.cirofreitas.API.Musica.repository.ArtistaRepository;
+import com.cirofreitas.API.Musica.repository.MusicaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,9 @@ public class ArtistaService {
     @Autowired
     private AlbumRepository albumRepository;
 
+    @Autowired
+    private MusicaRepository musicaRepository;
+
     public Artista findById(Integer id) {
         Optional<Artista> artista  = repository.findById(id);
 
@@ -34,6 +38,8 @@ public class ArtistaService {
 
     public List<Album> listarAlbuns(Integer id) { return this.findById(id).getAlbuns(); }
 
+    public List<Album> listarTopCincoAlbuns(Integer id) { return albumRepository.listarTop5AlbumDeArtista(id); }
+
     public List<Musica> listarMusicas(Integer id) {
         List<Musica> musicas = new ArrayList<Musica>();
 
@@ -43,6 +49,8 @@ public class ArtistaService {
 
         return musicas;
     }
+
+    public List<Musica> listarTopDezMusicas(Integer id) { return musicaRepository.listarTopDezMusicasDeArtista(id); }
 
     public List<Origem> listarOrigens(Integer id) { return this.findById(id).getOrigens(); }
 

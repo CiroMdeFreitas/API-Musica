@@ -38,10 +38,13 @@ public class ArtistaController {
     public List<Album> listarAlbuns(@PathVariable("id") Integer id) { return service.listarAlbuns(id); }
 
     @GetMapping("{id}/albuns/top5")
-    public List<Album> listarTopCincoAlbuns(@PathVariable("id") Integer id) { return service.listarAlbuns(id); }
+    public List<Album> listarTopCincoAlbuns(@PathVariable("id") Integer id) { return service.listarTopCincoAlbuns(id); }
 
     @GetMapping("{id}/musicas")
     public List<Musica> listarMusicas(@PathVariable("id") Integer id) { return service.listarMusicas(id); }
+
+    @GetMapping("{id}/musicas/top10")
+    public List<Musica> listarTopDezMusicas(@PathVariable("id") Integer id) { return service.listarTopDezMusicas(id); }
 
     @GetMapping("{id}/origens")
     public List<Origem> listarOrigens(@PathVariable("id") Integer id) { return service.listarOrigens(id); }
