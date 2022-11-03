@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static com.cirofreitas.API.Musica.util.DoubleHanfler.formatarParaDuasCasasDecimais;
+
 @Entity
 @Table(name = "tab_artista")
 public class Artista extends Entidade {
@@ -42,12 +44,14 @@ public class Artista extends Entidade {
     }
 
     private void gerarPopularidade() {
-        Double novaPopularidade = 0.00;
+        Double popularidade = 0.00;
         for(Album album : this.albuns)
-            novaPopularidade += album.getPopularidade();
+            popularidade += album.getPopularidade();
 
-        if(novaPopularidade > 0.00)
-            this.setPopularidade(novaPopularidade/this.albuns.size());
+        if(popularidade > 0.00) {
+            Double novaPopularidade = formatarParaDuasCasasDecimais(popularidade/this.albuns.size());
+            this.setPopularidade(novaPopularidade);
+        }
         else
             this.setPopularidade(1.00);
     }
