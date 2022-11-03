@@ -17,6 +17,7 @@ public class AlbumService {
     public void save(AlbumDto album) {
         Album novoAlbum = album.dtoToModel();
         Optional<Album> albumPresente = repository.findAlbumByOrigem(album.getIdOrigem());
+        
         if(albumPresente.isPresent()) {
             Album albumRegitrado = albumPresente.get();
 
