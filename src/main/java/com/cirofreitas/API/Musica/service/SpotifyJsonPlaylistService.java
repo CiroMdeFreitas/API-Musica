@@ -37,10 +37,6 @@ public class SpotifyJsonPlaylistService {
             });
         }
 
-        novosArtistas.forEach((novoArtista) -> {
-            System.out.println(novoArtista.getNome());
-            artistaService.save(novoArtista);
-        });
+        novosArtistas.forEach((novoArtista) -> artistaService.save(novoArtista));
     }
 }
-//playlist.getTracks().getItems().forEach((item) ->
