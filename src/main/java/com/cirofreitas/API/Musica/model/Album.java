@@ -53,7 +53,7 @@ public class Album extends Entidade {
         if(novaPopularidade > 0.00)
             this.setPopularidade(novaPopularidade/this.musicas.size());
         else
-            this.setPopularidade(0.00);
+            this.setPopularidade(1.00);
     }
 
     public Year getDataLacamento() { return dataLacamento; }
