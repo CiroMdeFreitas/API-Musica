@@ -22,7 +22,7 @@ Uma API inicialmente criada como trabalho final da School MJV, com o propósito 
 
 Segue a estrutura de dados que são armazenados pela API:
 
-[Diagrama]
+![imagem de uma diagrama UML, contendo as entidades que terão uma breve explicação abaixo.](diagram/diagram.png)
 
 ##### Artista
 
