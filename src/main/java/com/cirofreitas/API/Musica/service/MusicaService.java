@@ -14,7 +14,7 @@ public class MusicaService {
     private MusicaRepository repository;
 
     public void save(MusicaDto musica) {
-        Optional<Musica> musicaPresente = repository.findMusicaByOrigem(musica.getIdOrigem())
+        Optional<Musica> musicaPresente = repository.findMusicaByOrigem(musica.getIdOrigem());
         if(!musicaPresente.isPresent())
             repository.save(musica.dtoToModel());
     }
