@@ -25,6 +25,11 @@ public class AlbumController {
         return repository.findAll();
     }
 
+    @GetMapping("top10")
+    public List<Album> listTopTenAlbum() {
+        return repository.listTopTenAlbum();
+    }
+
     @GetMapping("{id}")
     public Album findById(@PathVariable("id") Integer id) {
         return service.findById(id);

@@ -24,6 +24,11 @@ public class MusicaController {
         return repository.findAll();
     }
 
+    @GetMapping("top10")
+    public List<Musica> listTopTenMusica() {
+        return repository.listTopTenMusica();
+    }
+
     @GetMapping("{id}")
     public Musica findById(@PathVariable("id") Integer id) {
         return service.findById(id);

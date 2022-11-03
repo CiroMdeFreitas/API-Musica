@@ -26,6 +26,11 @@ public class ArtistaController {
         return repository.findAll();
     }
 
+    @GetMapping("top10")
+    public List<Artista> listTopTenArtistas() {
+        return repository.listTopTenArtistas();
+    }
+
     @GetMapping("{id}")
     public Artista findById(@PathVariable("id") Integer id) { return service.findById(id); }
 
