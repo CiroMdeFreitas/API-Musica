@@ -30,11 +30,14 @@ Possui todas as outras entidades, sua popularidade é gerada a partir de uma mé
 
 ###### Consultas:
 
-- /artistas - Todos artistas registrados;
-- /artistas/{id} - Retorna artista com o id fornecido;
-- /artistas/{id}/albuns - Retorna todos álbuns do artista solicitado;
-- /artistas/{id}/musicas - Retorna todas músicas do artista solicitado;
-- /artistas/{id}/origens - Retorna todas origens do artista solicitado;
+- /artistas - Retorna todos artistas registrados;
+- /artistas/top10 - Retorna os 10 artistas mais populares;
+- /artistas/{id} - Retorna o artista com o id fornecido;
+- /artistas/{id}/albuns - Retorna todos os álbuns do artista solicitado;
+- /artistas/{id}/albuns/top5 - Retorna os 5 álbuns mais polulares do artista solicitado;
+- /artistas/{id}/musicas - Retorna todas as músicas do artista solicitado;
+- /artistas/{id}/musicas/top10 - Retorna as 10 músicas mais populares do artista solicitado;
+- /artistas/{id}/origens - Retorna todas as origens do artista solicitado;
 
 ##### Album
 
@@ -42,9 +45,11 @@ Possui uma coleção de musicas, sua popularidade é gerada a partir de uma méd
 
 ###### Consultas:
 
-- /albuns - Todos álbuns registrados;
-- /albuns/{id} - Retorna álbum com o id fornecido;
-- /albuns/{id}/musicas - Retorna todas músicas do álbum solicitado;
+- /albuns - Retorna todos álbuns registrados;
+- /albuns/top10 - Retorna os 10 álbuns mais populares;
+- /albuns/{id} - Retorna o álbum com o id fornecido;
+- /albuns/{id}/musicas - Retorna todas as músicas do álbum solicitado;
+- /albuns/{id}/musicas/top - Retorna a música mais popular do álbum solicitado;
 - /albuns/{id}/origens - Retorna todas origens do álbum solicitado;
 
 ##### Musica
@@ -53,9 +58,10 @@ Responsável por fornecer popularidade, o que permiti definir o quão popular é
 
 ###### Consultas:
 
-- /musicas - Todas musicas registrados;
-- /musicas/{id} - Retorna musica com o id fornecido;
-- /musicas/{id}/origens - Retorna todas origens da musica solicitado;
+- /musicas - Retorna todas musicas registradas;
+- /musicas/top10 - Retorna as 10 musicas mais populares;
+- /musicas/{id} - Retorna a musica com o id fornecido;
+- /musicas/{id}/origens - Retorna todas as origens da musica solicitado;
 
 ##### Origem
 
@@ -63,7 +69,7 @@ Representa de qual plataforma originou a entidade, tem papel fundamental para ev
 
 ###### Consultas:
 
-- /origens- Todas origens registradas;
-- /origens/{id} - Retorna origem com o id fornecido;
+- /origens- Retorna todas as origens registradas;
+- /origens/{id} - Retorna a origem com o id fornecido;
 
 ---
