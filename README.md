@@ -9,9 +9,9 @@ Esta recebe dados das seguintes formas:
 LEGENDA: ✔ Implementado | ⌚ Desenvolvimento | 📅 Planejado
 
 Spotify:
-    ⌚ Receber um arquivo JSON de Playlist
-    ⌚ Receber um arquivo JSON de Album
-    ⌚ Receber um arquivo JSON de Artista/Banda
+    ✔ Receber um arquivo JSON de Playlist
+    📅 Receber um arquivo JSON de Album
+    📅 Receber um arquivo JSON de Artista/Banda
     📅 Consumir um link de Playlist
     📅 Consumir um link de Album
     📅 Consumir um link de Artista/Banda
