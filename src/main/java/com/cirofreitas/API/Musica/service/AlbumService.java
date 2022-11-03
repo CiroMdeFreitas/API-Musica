@@ -32,6 +32,18 @@ public class AlbumService {
 
     public List<Musica> listarMusicas(Integer id) { return this.findById(id).getMusicas(); }
 
+    public Musica listarTopMusicaDeAlbum(Integer id) {
+        Album album = this.findById(id);
+        Musica topMusica = new Musica();
+        topMusica.setPopularidade(0.00);
+
+        for(Musica musica : album.getMusicas())
+            if(musica.getPopularidade() > topMusica.getPopularidade())
+                topMusica = musica;
+
+        return topMusica;
+    }
+
     public void save(AlbumDto album) {
         Album novoAlbum = album.dtoToModel();
         Optional<Album> albumPresente = repository.findAlbumByOrigem(album.getIdOrigem());

@@ -38,6 +38,9 @@ public class AlbumController {
     @GetMapping("{id}/musicas")
     public List<Musica> listarMusicas(@PathVariable("id") Integer id) { return service.listarMusicas(id); }
 
+    @GetMapping("{id}/musicas/top")
+    public Musica listarTopMusicaDeAlbum(@PathVariable("id") Integer id) { return service.listarTopMusicaDeAlbum(id); }
+
     @GetMapping("{id}/origens")
     public List<Origem> listarOrigens(@PathVariable("id") Integer id) { return service.listarOrigens(id); }
 
