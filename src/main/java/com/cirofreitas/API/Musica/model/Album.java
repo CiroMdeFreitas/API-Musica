@@ -42,6 +42,17 @@ public class Album extends Entidade {
             this.musicas.add(musica);
     }
 
+    public void gerarPopularidade() {
+        Double novaPopularidade = 0.00;
+        for(Musica musica : this.musicas)
+            novaPopularidade += musica.getPopularidade();
+
+        if(novaPopularidade > 0.00)
+            this.setPopularidade(novaPopularidade/this.musicas.size());
+        else
+            this.setPopularidade(0.00);
+    }
+
     public LocalDate getDataLacamento() { return dataLacamento; }
 
     public void setDataLacamento(LocalDate dataLacamento) { this.dataLacamento = dataLacamento; }

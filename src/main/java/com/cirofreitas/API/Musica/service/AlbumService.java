@@ -15,17 +15,22 @@ public class AlbumService {
     private AlbumRepository repository;
 
     public void save(AlbumDto album) {
+        Album novoAlbum = album.dtoToModel();
         Optional<Album> albumPresente = repository.findAlbumByOrigem(album.getIdOrigem());
         if(albumPresente.isPresent()) {
-            Album novoAlbum = album.dtoToModel();
             Album albumRegitrado = albumPresente.get();
 
             for(Musica musica : novoAlbum.getMusicas())
                 if(!albumRegitrado.getMusicas().contains(musica))
                     albumRegitrado.adicionarMusica(musica);
 
+            albumRegitrado.gerarPopularidade();
+
             repository.save(albumRegitrado);
-        } else
-            repository.save(album.dtoToModel());
+        } else {
+            novoAlbum.gerarPopularidade();
+
+            repository.save(novoAlbum);
+        }
     }
 }
